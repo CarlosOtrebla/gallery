@@ -22,10 +22,11 @@ const App = () => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget);
     const file = formData.get('image') as File;
+
     if (file && file.size > 0) {
-      setLoading(true);
+      setUploading(true);
       let result = await Photos.insert(file)
-      setLoading(false);
+      setUploading(false);
 
       if(result instanceof Error) {
         alert(`${result.name} - ${result.message}`)
